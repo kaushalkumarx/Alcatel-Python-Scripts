@@ -19,23 +19,28 @@ net_connect = ConnectHandler (**alcatel_sros)
 
 SROS_Version = net_connect.send_command ('show version')
 
+print(SROS_Version)
+
 config_1 = [ 'router interface system',
-                     'address 1.1.1.1/32',
-                     'no shutdown' 
+             'address 1.1.1.1/32',
+             'no shutdown' 
            ]
 output_system = net_connect.send_config_set (config_1)
 
+print(output_system)
+
 output_int = net_connect.send_command ('show router interface')
+
+print(output_int)
 
 output_ping = net_connect.send_command ('ping 1.1.1.1')
 
+print(output_ping)
+
 output_card = net_connect.send_command ('show card state')
+
+print(output_card)
 
 admin_save = net_connect.send_command ('admin save')
 
-print(SROS_Version)
-print(output_int)
-print(output_ping)
-print(output_system)
-print(output_card)
 print(admin_save)
