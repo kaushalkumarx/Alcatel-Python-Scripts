@@ -1,0 +1,36 @@
+from netmiko import ConnectHandler
+import datetime
+date_time = datetime.datetime.now()
+print now
+#
+alcatel_sros = {
+    'device_type': 'alcatel_sros',
+    'ip': '192.168.174.201',
+    'username': 'admin',
+    'password': 'admin',
+    'port' : 22,
+    'secret': 'admin',
+    'verbose': False,
+}
+
+net_connect = ConnectHandler (**alcatel_sros)
+
+config_1 = [ 'router interface system',
+                     'address 1.1.1.1/32',
+                     'no shutdown' 
+           ]
+output_system = net_connect.send_config_set (config_1)
+
+output_int = net_connect.send_command ('show router interface')
+
+output_ping = net_connect.send_command ('ping 1.1.1.1')
+
+output_card = net_connect.send_command ('show card state')
+
+admin_save = net_connect.send_command ('admin save')
+
+print(output_int)
+print(output_ping)
+print(output_system)
+print(output_card)
+print(admin_save)
