@@ -3,7 +3,7 @@
 from netmiko import ConnectHandler
 import datetime
 date_time = datetime.datetime.now()
-print now
+print date_time
 #
 alcatel_sros = {
     'device_type': 'alcatel_sros',
@@ -44,3 +44,5 @@ print(output_card)
 admin_save = net_connect.send_command ('admin save')
 
 print(admin_save)
+
+print date_time
